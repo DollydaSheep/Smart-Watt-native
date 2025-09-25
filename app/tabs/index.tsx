@@ -10,6 +10,8 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import Svg, { Path } from 'react-native-svg';
 import { Image, type ImageStyle, View } from 'react-native';
+import { green } from 'react-native-reanimated/lib/typescript/Colors';
+import HomeUsage from '@/components/ui/homeusage';
 
 const LOGO = {
   light: require('@/assets/images/react-native-reusables-light.png'),
@@ -45,30 +47,8 @@ export default function HomeScreen() {
 
   return (
     <>
-      <View className="flex flex-1 items-center justify-center gap-8 p-4 bg-background">
-        <Image source={LOGO[colorScheme ?? 'light']} style={IMAGE_STYLE} resizeMode="contain" />
-        <View className="gap-2 p-4">
-          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
-            1. Edit <Text variant="code">app/index.tsx</Text> to get started.
-          </Text>
-          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
-            2. Save to see your changes instantly.
-          </Text>
-        </View>
-        <View className="flex-row gap-2">
-          <Link href="https://reactnativereusables.com" asChild>
-            <Button>
-              <Text>Browse the Docs</Text>
-            </Button>
-          </Link>
-          <Link href="https://github.com/founded-labs/react-native-reusables" asChild>
-            <Button variant="ghost">
-              <Text>Star the Repo</Text>
-              <Icon as={StarIcon} />
-            </Button>
-          </Link>
-        </View>
-        <Link href="/settings" className='text-white'>Hello</Link>
+      <View className="flex flex-1 items-center gap-8 p-6 bg-background">
+        <HomeUsage />
       </View>
     </>
   );
