@@ -50,6 +50,12 @@ const homeCards = [
   },
   {
     type: "current_devices"
+  },
+  {
+    type: "ai_insights"
+  },
+  {
+    type: "power_limit"
   }
 ];
 
@@ -77,7 +83,7 @@ export default function HomeScreen() {
           autoPlay={false}
           data={homeCards}
           scrollAnimationDuration={500}
-          snapEnabled
+          snapEnabled={false}
           mode="parallax"
           modeConfig={{
             parallaxScrollingScale: 1,   // shrink side cards
@@ -92,6 +98,10 @@ export default function HomeScreen() {
                 return <HomeUsage tab='usage' title='Total Usage'/>
               case "current_devices":
                 return <HomeUsage tab='currentDevices' title="Connected Devices" />
+              case "ai_insights":
+                return <HomeUsage tab='aiInsights' title='AI Insights' />
+              case "power_limit":
+                return <HomeUsage tab='powerLimit' title='Power Limit' />
               default:
                 return <Text>Hello</Text>;
             }

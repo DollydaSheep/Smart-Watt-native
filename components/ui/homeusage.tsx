@@ -1,6 +1,6 @@
-import { View } from "react-native";
+import { Pressable, ScrollView, TouchableOpacity, View } from "react-native";
 import { Text } from '@/components/ui/text';
-import { TrendingUp } from "lucide-react-native";
+import { Lightbulb, TrendingUp } from "lucide-react-native";
 
 type HomeUsageProps = {
   tab: string
@@ -10,7 +10,9 @@ type HomeUsageProps = {
 export default function HomeUsage({tab, title} : HomeUsageProps){
   return(
     <>
-      <View className='w-full p-4 bg-secondary rounded-lg'>
+      <Pressable className='w-full max-h-40 flex-1 p-4 bg-secondary active:bg-secondary/80 rounded-lg' 
+        onPress={()=>{tab === "currentDevices" && console.log("oten")}}
+      >
 
         {tab === "usage" && (
           <>
@@ -34,7 +36,7 @@ export default function HomeUsage({tab, title} : HomeUsageProps){
 
         {tab === "currentDevices" && (
           <>
-            <View className="w-full flex flex-row justify-between items-center mb-2">
+            <View className="w-full flex flex-row justify-between items-center mb-1">
               <View className='flex flex-row items-center gap-2'>
                 <View className='w-2 h-2 rounded-full bg-green-400'></View>
                 <Text className='text-lg font-medium'>{title}</Text>
@@ -44,7 +46,7 @@ export default function HomeUsage({tab, title} : HomeUsageProps){
                 <Text className='text-xs text-green-400'>4 devices</Text>
               </View>
             </View>
-            <View className="flex flex-col gap-1">
+            <View className="flex flex-col">
               <View className="flex flex-row items-center justify-between w-full">
                 <View className="flex flex-1 flex-row gap-2 items-center">
                   <View className="h-2 w-2 rounded-full bg-red-500"></View>
@@ -86,10 +88,41 @@ export default function HomeUsage({tab, title} : HomeUsageProps){
                   </View>
                 </View>
               </View>
+
+              <View className="flex flex-row items-center justify-between w-full">
+                <View className="flex flex-1 flex-row gap-2 items-center">
+                  <View className="h-2 w-2 rounded-full bg-white"></View>
+                  <Text className="text-sm truncate">Others...</Text>
+                </View>
+                <View className="flex flex-row items-center gap-2">     
+                  <View className="flex flex-row items-center gap-1">
+                    <Text className="text-sm w-10">(70%)</Text>
+                    <Text className="text-xs text-gray-400 w-12"></Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <Text className="text-[8px] mt-0.5 text-right text-gray-400">Tap for more info</Text>
+          </>
+        )}
+
+        {tab === "aiInsights" && (
+          <>
+            <View className="w-full flex flex-row justify-between items-center mb-2">
+              <View className='flex flex-row items-center gap-2'>
+                <View className='w-2 h-2 rounded-full bg-green-400'></View>
+                <Text className='text-lg font-medium'>{title}</Text>
+              </View>
+            </View>
+            <View className="p-2">
+              <View className="flex flex-row gap-2">
+                <Lightbulb color={"#ffdf20"} size={20} />
+                <Text className="text-yellow-300 font-medum">Energy Saving Tip</Text>
+              </View>
             </View>
           </>
         )}
-      </View>
+      </Pressable>
     </>
   )
 }
