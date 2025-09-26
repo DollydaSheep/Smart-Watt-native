@@ -13,6 +13,7 @@ import { Dimensions, Image, type ImageStyle, View } from 'react-native';
 import { green } from 'react-native-reanimated/lib/typescript/Colors';
 import HomeUsage from '@/components/ui/homeusage';
 import Carousel from "react-native-reanimated-carousel";
+import Sphere3D from '@/components/ui/sphere3d';
 
 const LOGO = {
   light: require('@/assets/images/react-native-reusables-light.png'),
@@ -96,6 +97,7 @@ export default function HomeScreen() {
             }
           }}
         />
+        <Sphere3D />
       </View>
     </>
   );
