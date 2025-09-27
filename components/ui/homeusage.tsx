@@ -1,6 +1,7 @@
-import { Pressable, ScrollView, TouchableOpacity, View } from "react-native";
+import { Pressable, ScrollView, TextInput, TouchableOpacity, View } from "react-native";
 import { Text } from '@/components/ui/text';
-import { Lightbulb, TrendingUp } from "lucide-react-native";
+import { Lightbulb, TrendingUp, Zap } from "lucide-react-native";
+import { router } from "expo-router";
 
 type HomeUsageProps = {
   tab: string
@@ -11,7 +12,7 @@ export default function HomeUsage({tab, title} : HomeUsageProps){
   return(
     <>
       <Pressable className='w-full max-h-40 flex-1 p-4 bg-secondary active:bg-secondary/80 rounded-lg' 
-        onPress={()=>{tab === "currentDevices" && console.log("oten")}}
+        onPress={()=>{tab === "currentDevices" && router.push('/tabs/devices')}}
       >
 
         {tab === "usage" && (
@@ -118,6 +119,34 @@ export default function HomeUsage({tab, title} : HomeUsageProps){
               <View className="flex flex-row gap-2">
                 <Lightbulb color={"#ffdf20"} size={20} />
                 <Text className="text-yellow-300 font-medum">Energy Saving Tip</Text>
+              </View>
+            </View>
+          </>
+        )}
+
+        {tab === "powerLimit" && (
+          <>
+            <View className="w-full flex flex-row justify-between items-center mb-4">
+              <View className='flex flex-row items-center gap-4'>
+                <View className="p-3 bg-green-400 rounded-full">
+                  <Zap color={"#fff"} />
+                </View>
+                <View>
+                  <Text className="text-xl font-bold">15.0 kW</Text>
+                  <Text className="text-sm text-gray-400">{title}</Text>
+                </View>
+                <TextInput className="bg-white flex-1 rounded-md" keyboardType="numeric" value={"15"}/>
+                <Text className="text-gray-400">kW</Text>
+              </View>
+            </View>
+            <View className="w-full border-b border-gray-600/50 mb-3 rounded-lg"></View>
+            <View className="flex gap-2">
+              <View className="flex flex-row justify-between">
+                <Text className="text-gray-400">Usage</Text>
+                <Text className="text-green-400">58% of limit</Text>
+              </View>
+              <View className="w-full py-1 bg-gray-600 rounded-md overflow-hidden">
+                <View className="w-[58%] bg-green-400 h-2 absolute"></View>
               </View>
             </View>
           </>
